@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// State structure as required by lab: { todos: [] }
 const initialState = {
-  todos: [], //
+  todos: [],
 };
 
 const todoSlice = createSlice({
@@ -15,7 +16,7 @@ const todoSlice = createSlice({
       state.todos.push(action.payload);
     },
     deleteTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo._id !== action.payload);
+      state.todos = state.todos.filter((todo) => todo._id !== action.payload && todo.id !== action.payload);
     },
   },
 });

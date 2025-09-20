@@ -15,7 +15,7 @@ app.use(cors({
   credentials: true,
 }));
 app.use(express.json());
-app.use(cookieParser()); //
+app.use(cookieParser());
 
 const connectDB = async () => {
   try {
@@ -28,7 +28,8 @@ const connectDB = async () => {
 };
 connectDB();
 
-app.use('/api/users', userRoutes);
-app.use('/api/todos', todoRoutes);
+// Updated routes to match lab requirements
+app.use('/', userRoutes);  // This will handle /signup, /signin, /logout
+app.use('/todos', todoRoutes);  // This will handle /todos routes
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

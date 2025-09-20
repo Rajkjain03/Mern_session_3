@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// State structure as required by lab: { token: string|null, user: object|null }
 const initialState = {
-  user: null, //
-  token: null, //
+  token: null,
+  user: null,
 };
 
 const authSlice = createSlice({
@@ -10,12 +11,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      state.user = action.payload;
-      state.token = action.payload._id;
+      state.token = action.payload.token;
+      state.user = action.payload.user || { _id: action.payload.token }; // Set basic user info
     },
-    clearCredentials: (state) => { //
-      state.user = null;
+    clearCredentials: (state) => {
       state.token = null;
+      state.user = null;
     },
   },
 });
